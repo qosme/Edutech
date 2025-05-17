@@ -1,5 +1,5 @@
-package com.usuario.usuario.Controllers;
+package com.usuario.usuario.controllers;
 
 public class UserController {
-    
+
 }
