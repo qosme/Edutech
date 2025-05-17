@@ -1,5 +1,30 @@
 package com.usuario.usuario.models.requests;
 
-public class UserCreate {
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import lombok.Data;
 
+@Data
+public class UserCreate {
+    
+    private String name;
+
+    private String lastName;
+
+    private String secondLastName;
+
+    @NotBlank
+    @Email
+    private String email;
+
+    @NotBlank
+    private String password;
+
+    private String phone;
+
+    @NotBlank
+    private String city;
+
+    @NotBlank
+    private String region;
 }

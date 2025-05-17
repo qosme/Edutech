@@ -1,6 +1,6 @@
 package com.usuario.usuario.models.entities;
 
-import java.sql.Date;
+import java.util.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -21,6 +21,10 @@ public class User {
 
     private String name;
 
+    private String lastName;
+
+    private String secondLastName;
+
     @Column(nullable = false, unique = true)
     private String email;
 
@@ -29,8 +33,12 @@ public class User {
 
     private String phone;
 
-    @Column(name = "fecha_nacimiento")
-    private Date birthDate;
-    
+    @Column(name = "feca_creacion")
+    private Date createdAt;
+
+    private String city;
+
+    private String region;
+
     private Boolean isActive;
 }
