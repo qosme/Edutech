@@ -33,7 +33,7 @@ public class User {
 
     private String phone;
 
-    @Column(name = "feca_creacion")
+    @Column(name = "fecha_creacion")
     private Date createdAt;
 
     private String city;
