@@ -25,7 +25,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/")
+    @GetMapping("")
     public List<User> getAllUsers() {
         return userService.getAllUsers();
     }
@@ -35,12 +35,12 @@ public class UserController {
         return userService.getUserById(id);
     }
 
-    @PostMapping("/")
+    @PostMapping("")
     public User register(@Valid @RequestBody UserCreate body){
         return userService.register(body);
     }
 
-    @PutMapping()
+    @PutMapping("")
     public User update(@Valid @RequestBody UserUpdate body){
         return userService.updateUser(body);
     }
