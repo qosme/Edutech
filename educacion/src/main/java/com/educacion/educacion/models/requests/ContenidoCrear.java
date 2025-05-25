@@ -1,4 +1,4 @@
-package com.educacion.educacion.requests;
+package com.educacion.educacion.models.requests;
 
 import org.hibernate.validator.constraints.URL;
 

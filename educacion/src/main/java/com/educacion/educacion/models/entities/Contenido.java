@@ -26,7 +26,7 @@ public class Contenido {
 
     
     @ManyToOne
-    @JoinColum (name = "curso_id", nullable = false)
+    @JoinColumn (name = "curso_id", nullable = false)
     private Curso curso;
 
 

@@ -1,4 +1,4 @@
-package com.educacion.educacion.requests;
+package com.educacion.educacion.models.requests;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;

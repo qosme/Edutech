@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.educacion.educacion.models.entities.Contenido;
-import com.educacion.educacion.requests.ContenidoCrear;
+import com.educacion.educacion.models.requests.ContenidoCrear;
 import com.educacion.educacion.services.ContenidoService;
 
 import jakarta.validation.Valid;
