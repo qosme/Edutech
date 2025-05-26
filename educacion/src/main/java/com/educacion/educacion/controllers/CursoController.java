@@ -14,6 +14,8 @@ import com.educacion.educacion.models.entities.Curso;
 import com.educacion.educacion.models.requests.CursoCrear;
 import com.educacion.educacion.services.CursoServices;
 
+import jakarta.validation.Valid;
+
 @RequestMapping("/curso")
 @RestController
 public class CursoController {
@@ -33,6 +35,7 @@ public class CursoController {
     }
     
     @PostMapping("")
-    public Curso crearNuevo(@RequestBody CursoCrear cuerpo) {
+    public Curso crearNuevo(@Valid @RequestBody CursoCrear cuerpo) {
         return cursoServices.crearNuevo(cuerpo);
     }
+}

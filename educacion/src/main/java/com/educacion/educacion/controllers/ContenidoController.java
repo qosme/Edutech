@@ -7,12 +7,14 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.educacion.educacion.models.entities.Contenido;
 import com.educacion.educacion.models.requests.ContenidoCrear;
+import com.educacion.educacion.models.requests.ModifyContent;
 import com.educacion.educacion.services.ContenidoService;
 
 import jakarta.validation.Valid;
@@ -29,10 +31,15 @@ public class ContenidoController {
     }
 
     @PostMapping("")
-
     public Contenido crearNuevo(@Valid @RequestBody ContenidoCrear cuerpo) {
         return contenidoService.crearNuevo(cuerpo);
     }
+
+    @PutMapping("")
+    public Contenido modificarContenido(@RequestBody ModifyContent cuerpo) {
+        return contenidoService.modificarContenido(cuerpo);
+    }
+
     @DeleteMapping("/{id}")
     public String eliminarContenido(@PathVariable int id) {
         contenidoService.eliminar(id);
@@ -40,23 +47,6 @@ public class ContenidoController {
         return "ok";
         
     }
-    // Endpoint para obtener todos los contenidos
-    // @GetMapping("")
-    // public List<Contenido> obtenerTodos() {
-    //     return contenidoService.obtenerTodos();
-    // }
 
-    // Endpoint para obtener un contenido por su ID
-    // @GetMapping("/{id}")
-    // public Contenido obtenerPorId(@PathVariable int id) {
-    //     return contenidoService.obtenerporid(id);
-    // }
-
-    // Endpoint para crear un nuevo contenido
-    // @PostMapping("")
-    // public Contenido crearNuevo(@RequestBody ContenidoCrear solicitud) {
-    //     return contenidoService.crearNuevo(solicitud);
-    // }
-
-    @
+    
 }

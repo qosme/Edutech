@@ -1,7 +1,5 @@
 package com.educacion.educacion.models.entities;
 
-import java.util.Date;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 
