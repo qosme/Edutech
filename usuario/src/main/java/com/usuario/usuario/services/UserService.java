@@ -14,7 +14,10 @@ import com.usuario.usuario.models.requests.UserCreate;
 import com.usuario.usuario.models.requests.UserUpdate;
 import com.usuario.usuario.repositories.UserRepository;
 
+import jakarta.transaction.Transactional;
+
 @Service
+@Transactional
 public class UserService {
 
     @Autowired
