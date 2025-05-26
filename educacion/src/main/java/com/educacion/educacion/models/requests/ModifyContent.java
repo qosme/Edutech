@@ -3,20 +3,18 @@ package com.educacion.educacion.models.requests;
 import org.hibernate.validator.constraints.URL;
 
 import jakarta.validation.constraints.NotBlank;
-
 import lombok.Data;
 
 @Data
-public class ContenidoCrear {
-    @NotBlank
+public class ModifyContent {
+    //para saber cual modificar
+    private int id;
+
     private String titulo;
-    
-    @NotBlank
+
     private String descripcion;
-    
-    @NotBlank
+
     @URL
     private String urlVideo;
-    
-    private int idCurso;
+
 }
