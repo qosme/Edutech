@@ -14,39 +14,36 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.educacion.educacion.models.entities.Contenido;
 import com.educacion.educacion.models.requests.ContenidoCrear;
-import com.educacion.educacion.models.requests.ModifyContent;
+import com.educacion.educacion.models.requests.ContenidoModificar;
 import com.educacion.educacion.services.ContenidoService;
 
 import jakarta.validation.Valid;
 
-@RestController
 @RequestMapping("/contenido")
+@RestController
 public class ContenidoController {
     @Autowired
     private ContenidoService contenidoService;
 
-    @GetMapping("")
-    public List<Contenido> obtenerTodos() {
+
+    @GetMapping("/todos")
+    public List<Contenido> listarTodos(){
         return contenidoService.obtenerTodos();
     }
 
-    @PostMapping("")
-    public Contenido crearNuevo(@Valid @RequestBody ContenidoCrear cuerpo) {
+    @PostMapping("/nuevo")
+    public Contenido crearNuevo(@Valid @RequestBody ContenidoCrear cuerpo){
         return contenidoService.crearNuevo(cuerpo);
     }
 
-    @PutMapping("")
-    public Contenido modificarContenido(@RequestBody ModifyContent cuerpo) {
-        return contenidoService.modificarContenido(cuerpo);
-    }
-
-    @DeleteMapping("/{id}")
-    public String eliminarContenido(@PathVariable int id) {
+    @DeleteMapping("/eliminar/{id}")
+    public String eliminarContenido(@PathVariable int id){
         contenidoService.eliminar(id);
-        // Retorna un mensaje de éxito
-        return "ok";
-        
+        return "Contenido eliminado correctamente";
     }
 
-    
+    @PutMapping("/modificar")
+    public Contenido modificar(@RequestBody ContenidoModificar cuerpo){
+        return contenidoService.modificar(cuerpo);
+    }
 }

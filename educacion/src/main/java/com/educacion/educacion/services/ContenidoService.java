@@ -10,7 +10,7 @@ import org.springframework.web.server.ResponseStatusException;
 import com.educacion.educacion.models.entities.Contenido;
 import com.educacion.educacion.models.entities.Curso;
 import com.educacion.educacion.models.requests.ContenidoCrear;
-import com.educacion.educacion.models.requests.ModifyContent;
+import com.educacion.educacion.models.requests.ContenidoModificar;
 import com.educacion.educacion.repositories.ContenidoRepository;
 import com.educacion.educacion.repositories.CursoRepository;
 
@@ -18,57 +18,53 @@ import com.educacion.educacion.repositories.CursoRepository;
 public class ContenidoService {
     @Autowired
     private ContenidoRepository contenidoRepository;
-    
     @Autowired
     private CursoRepository cursoRepository;
-    
 
-    // Método para obtener todos los contenidos
-    public List<Contenido> obtenerTodos() {
+
+    public List<Contenido> obtenerTodos(){
         return contenidoRepository.findAll();
     }
 
-    // Método para crear un nuevo contenido
-    public Contenido obtenerporid(int id) {
-        Contenido contenido = contenidoRepository.findById(id).orElse(null);
-        // Verificar si el contenido existe
+    public Contenido obtenerPorId(int id){
+        Contenido contenido =  contenidoRepository.findById(id).orElse(null);
         if(contenido == null){
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Contenido no fue encontrado!");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"Contenido no encontrado");
         }
         return contenido;
     }
 
-    public Contenido crearNuevo(ContenidoCrear solicitud) {
+    public Contenido crearNuevo(ContenidoCrear solicitud){
         Contenido nuevo = new Contenido();
 
-        nuevo.setTitulo(solicitud.getTitulo());
         nuevo.setDescripcion(solicitud.getDescripcion());
+        nuevo.setTitulo(solicitud.getTitulo());
         nuevo.setUrlVideo(solicitud.getUrlVideo());
+        
+        Curso cursoAsociado = cursoRepository.findById(solicitud.getIdCurso()).orElse(null);
 
-        //obtener id del curso
-        Curso cursoAsociado=cursoRepository.findById(solicitud.getIdCurso()).orElse(null);
         nuevo.setCurso(cursoAsociado);
         return contenidoRepository.save(nuevo);
     }
-    // Método para eliminar un contenido por ID
-    public void eliminar (int id) {
-        Contenido contenido = obtenerporid(id);
-       
-            
+
+    public void eliminar(int id){
+        Contenido contenido = obtenerPorId(id);
         contenidoRepository.delete(contenido);
     }
 
-    public Contenido modificarContenido(ModifyContent solicitud) {
-        Contenido contenido = obtenerporid(solicitud.getId());
-        if(solicitud.getTitulo() != null) {
+    public Contenido modificar(ContenidoModificar solicitud){
+        Contenido contenido = obtenerPorId(solicitud.getId());
+
+        if(solicitud.getTitulo() != null){
             contenido.setTitulo(solicitud.getTitulo());
         }
-        if (solicitud.getDescripcion() != null) {
-            contenido.setTitulo(solicitud.getDescripcion());
+        if(solicitud.getDescripcion() != null){
+            contenido.setDescripcion(solicitud.getDescripcion());
         }
-        if (solicitud.getUrlVideo() != null) {
+        if(solicitud.getUrlVideo() != null){
             contenido.setUrlVideo(solicitud.getUrlVideo());
         }
+
         return contenidoRepository.save(contenido);
     }
 }

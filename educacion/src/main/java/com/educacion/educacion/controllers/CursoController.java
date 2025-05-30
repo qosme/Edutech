@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.educacion.educacion.models.entities.Curso;
 import com.educacion.educacion.models.requests.CursoCrear;
-import com.educacion.educacion.services.CursoServices;
+import com.educacion.educacion.services.CursoService;
 
 import jakarta.validation.Valid;
 
@@ -20,22 +20,21 @@ import jakarta.validation.Valid;
 @RestController
 public class CursoController {
     @Autowired
-    private CursoServices cursoServices;
-    
-    // Endpoint para obtener todos los cursos
-    @GetMapping("")
-    public List<Curso>  Todos() {
-        return cursoServices.obtenerTodos();
+    private CursoService cursoService;
+
+    @GetMapping("/todos")
+    public List<Curso> todos(){
+        return cursoService.obtenerTodos();
     }
-    
-    // Endpoint para obtener un curso por su ID
-    @GetMapping("/{id}")
-    public Curso listarPorId(@PathVariable int id) {
-        return cursoServices.obtenerporid(id);
+
+    @GetMapping("/listar/{id}")
+    public Curso listarUno(@PathVariable int id){
+        return cursoService.obtenerPorId(id);
     }
-    
-    @PostMapping("")
-    public Curso crearNuevo(@Valid @RequestBody CursoCrear cuerpo) {
-        return cursoServices.crearNuevo(cuerpo);
+
+
+    @PostMapping("/nuevo")
+    public Curso crearNuevo(@Valid @RequestBody CursoCrear cuerpo){
+        return cursoService.crearNuevo(cuerpo);
     }
 }

@@ -7,6 +7,4 @@ import lombok.Data;
 public class CursoCrear {
     @NotBlank
     private String nombre;
-
 }
-    

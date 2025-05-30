@@ -26,27 +26,27 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("")
+    @GetMapping("/todos")
     public List<User> getAllUsers() {
         return userService.getAllUsers();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/uno/{id}")
     public User getOneUser(@PathVariable int id) {
         return userService.getUserById(id);
     }
 
-    @PostMapping("")
+    @PostMapping("/registrar")
     public User register(@Valid @RequestBody UserCreate body){
         return userService.register(body);
     }
 
-    @PutMapping("")
+    @PutMapping("/actualizar")
     public User update(@Valid @RequestBody UserUpdate body){
         return userService.updateUser(body);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/eliminar/{id}")
     public String delete(@PathVariable int id) {
         userService.deleteUser(id);
         return "Usuario eliminado";
