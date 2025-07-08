@@ -1,0 +1,11 @@
+-------------------------------------------------------------------------------
+Test set: com.example.api_educacion.EvaluacionServiceTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.017 s <<< FAILURE! -- in com.example.api_educacion.EvaluacionServiceTests
+com.example.api_educacion.EvaluacionServiceTests.TestModificar -- Time elapsed: 0.009 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "com.example.api_educacion.services.EvaluacionService.modificar(com.example.api_educacion.models.requests.EvaluacionModificar)" because "this.evaluacionService" is null
+	at com.example.api_educacion.EvaluacionServiceTests.TestModificar(EvaluacionServiceTests.java:29)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+

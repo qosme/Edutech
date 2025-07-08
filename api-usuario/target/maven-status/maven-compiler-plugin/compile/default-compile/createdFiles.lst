@@ -1,0 +1,7 @@
+com\example\api_usuario\repositories\UserRepository.class
+com\example\api_usuario\models\entities\User.class
+com\example\api_usuario\models\requests\UserUpdate.class
+com\example\api_usuario\services\UserService.class
+com\example\api_usuario\ApiUsuarioApplication.class
+com\example\api_usuario\controllers\UserController.class
+com\example\api_usuario\models\requests\UserCreate.class
