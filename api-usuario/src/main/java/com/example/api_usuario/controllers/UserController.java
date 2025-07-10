@@ -18,45 +18,55 @@ import com.example.api_usuario.models.requests.UserCreate;
 import com.example.api_usuario.models.requests.UserUpdate;
 import com.example.api_usuario.services.UserService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/usuarios")
+@Tag(name = "Usuarios", description = "Operaciones relacionadas con usuarios")
 public class UserController {
     @Autowired
     private UserService userService;
 
+    @Operation(summary = "Mostrar usuarios", description = "Muestra todos los alumnos")
     @GetMapping("/todos")
     public List<User> getAllUsers() {
         return userService.getAllUsers();
     }
 
+    @Operation(summary = "Buscar usuario por ID", description = "Obtiene un usuario por su ID")
     @GetMapping("/uno/{id}")
     public User getOneUser(@PathVariable int id) {
         return userService.getUserById(id);
     }
 
+    @Operation(summary = "Registrar usuario", description = "Crea un nuevo usuario")
     @PostMapping("/registrar")
     public User register(@Valid @RequestBody UserCreate body){
         return userService.register(body);
     }
 
+    @Operation(summary = "Actualizar usuario", description = "Actualiza un usuario existente")
     @PutMapping("/actualizar")
     public User update(@Valid @RequestBody UserUpdate body){
         return userService.updateUser(body);
     }
 
+    @Operation(summary = "Eliminar usuario", description = "Elimina un usuario por su ID")
     @DeleteMapping("/eliminar/{id}")
     public String delete(@PathVariable int id) {
         userService.deleteUser(id);
         return "Usuario eliminado";
     }
 
+    @Operation(summary = "Buscar usuario por curso", description = "Obtiene un usuario por su curso")
     @GetMapping("/buscar-por-curso/{courseId}")
     public List<User> getByCourse(@PathVariable int courseId) {
         return userService.getByCourse(courseId);
     }
 
+    @Operation(summary = "Buscar evaluaciones por usuario", description = "Obtiene las evaluaciones por usuario")
     @GetMapping("evaluaciones-por-usuario/{idUsuario}")
     public EvaluacionByUserResponse findEvaluacionByIdUsuario(@PathVariable int idUsuario){
         return userService.findEvaluacionByIdUsuario(idUsuario);
